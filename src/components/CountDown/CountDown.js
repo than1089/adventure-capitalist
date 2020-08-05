@@ -1,42 +1,47 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
+function CountDown({timeTaken, onComplete = () => {}, autoStart, uuid}) {
+  const [totalSeconds, setTotalSeconds] = useState(timeTaken);
 
-function CountDown(props) {
-  const [totalSeconds, setTotalSeconds] = useState(props.seconds);
-  const { onComplete = () => {} } = props;
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [hours, setHours] = useState(0);
-
-  const calculateTimeLeft = useCallback(() => {
-    let secondsToCalculate = totalSeconds;
-    setHours(Math.floor(secondsToCalculate / 3600));
-    secondsToCalculate %= 3600;
-    setMinutes(Math.floor(secondsToCalculate / 60));
-    setSeconds(secondsToCalculate % 60);
-  }, [totalSeconds]);
+  const timeOutRef = useRef();
 
   useEffect(() => {
-    const inverval = setInterval(() => {
-      calculateTimeLeft();
+    setTotalSeconds(timeTaken);
+  }, [timeTaken, uuid])
+
+  useEffect(() => {
+    if (!autoStart) {
+      return;
+    }
+    timeOutRef.current = setTimeout(() => {
       if (totalSeconds > 0) {
         setTotalSeconds(totalSeconds - 1);
       } else {
-        clearInterval(inverval);
+        clearTimeout(timeOutRef.current);
         onComplete();
       }
     }, 1000);
 
     return () => {
-      clearInterval(inverval);
+      clearTimeout(timeOutRef.current);
     }
-  }, [totalSeconds, onComplete, calculateTimeLeft]);
+  }, [totalSeconds, autoStart, uuid, onComplete]);
 
   return (
-    <div className="timer">
-      {String(hours).padStart(2, '0')}:{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
+    <div className="count-down-timer">
+      {formatTime(autoStart ? totalSeconds : 0)}
     </div>
   );
+}
+
+function formatTime(totalSeconds) {
+  const hours = Math.floor(totalSeconds / 3600);
+  totalSeconds %= 3600;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return String(hours).padStart(2, '0') + ':' +
+    String(minutes).padStart(2, '0') + ':' +
+    String(seconds).padStart(2, '0');
 }
 
 export { CountDown };
