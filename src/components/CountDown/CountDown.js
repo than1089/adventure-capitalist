@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-function CountDown({timeTaken, onComplete = () => {}, autoStart, uuid}) {
+export function CountDown({timeTaken, onComplete = () => {}, autoStart, uuid}) {
   const [totalSeconds, setTotalSeconds] = useState(timeTaken);
 
   const timeOutRef = useRef();
@@ -14,7 +14,7 @@ function CountDown({timeTaken, onComplete = () => {}, autoStart, uuid}) {
       return;
     }
     timeOutRef.current = setTimeout(() => {
-      if (totalSeconds > 0) {
+      if (totalSeconds > 1) {
         setTotalSeconds(totalSeconds - 1);
       } else {
         clearTimeout(timeOutRef.current);
@@ -43,5 +43,3 @@ function formatTime(totalSeconds) {
     String(minutes).padStart(2, '0') + ':' +
     String(seconds).padStart(2, '0');
 }
-
-export { CountDown };

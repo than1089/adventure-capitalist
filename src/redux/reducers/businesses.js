@@ -1,10 +1,9 @@
-import { BUY_BUSINESS } from "../actionTypes";
+import { BUY_BUSINESS, HIRE_MANAGER } from "../actionTypes";
 import businesses from '../../data/businesses';
 import { round } from '../../utils/number';
 
-
 const initialState = businesses;
-const PROFIT_GAIN = 1.3;
+const PROFIT_FROM_PRICE = 0.3;
 const PRICE_GAIN = 1.1;
 
 export default function(state = initialState, action) {
@@ -13,15 +12,27 @@ export default function(state = initialState, action) {
       const businessId = action.payload.businessId;
       const business = state[businessId];
       const qty = action.payload.qty;
+      const price = round(business.price * PRICE_GAIN * qty);
+      const profit = round(business.profit + business.price * qty * PROFIT_FROM_PRICE);
       return {
         ...state,
         [businessId]: {
           ...business,
           quantityPurchased: business.quantityPurchased + qty,
-          price: round(business.price * PRICE_GAIN * qty),
-          profit: round(business.profit * PROFIT_GAIN * qty),
+          price,
+          profit,
         }
       };
+    }
+    case HIRE_MANAGER: {
+      const business = state[action.payload.manager.businessId];
+      return {
+        ...state,
+        [business.id]: {
+          ...business,
+          hasManager: true
+        }
+      }
     }
     default:
       return state;

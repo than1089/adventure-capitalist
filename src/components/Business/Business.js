@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CountDown } from '../CountDown';
+import { Progress } from '../Progress';
 import { v4 as uuidv4 } from 'uuid';
 import { increaseBalance, decreaseBalance, buyBusiness } from '../../redux/actions';
-import { round } from '../../utils/number';
 import './Business.css';
 
-function Business({id, price, timeTaken, hasManager, quantityPurchased, icon, profit}) {
+function Business({id, name, price, timeTaken, hasManager, quantityPurchased, icon, profit}) {
   const [uuid, setUuid] = useState(uuidv4());
   const [running, setRunning] = useState(hasManager);
   const dispatch = useDispatch();
   const balance = useSelector(state => state.balance);
-  const buyQuantity = 1;
 
   const runBusiness = (e) => {
     e.preventDefault();
-    if (!hasManager && !running) {
+    if (!running) {
       setUuid(uuidv4());
       setRunning(true);
     }
@@ -32,35 +31,43 @@ function Business({id, price, timeTaken, hasManager, quantityPurchased, icon, pr
   }
 
   const buy = () => {
-    if (balance.amount >= price * buyQuantity) {
-      dispatch(buyBusiness(id, buyQuantity));
-      const totalPrice = round(price * buyQuantity);
-      dispatch(decreaseBalance(totalPrice));
+    if (balance.amount >= price) {
+      dispatch(buyBusiness(id, 1));
+      dispatch(decreaseBalance(price));
     }
   }
 
   return (
     <div className="business">
-      <div className="business-icon">
-        <a href="!#" type="button" onClick={runBusiness}>
+      {!!quantityPurchased &&
+        <>
+        <div className="business-icon" onClick={runBusiness}>
           <img src={`/images/${icon}`} alt="icon" width="60"/>
-        </a>
-        <div className="business-quantity">{quantityPurchased}</div>
-      </div>
-      <div>
-        <div className="business-progress">
-          {profit}
+          <div className="business-quantity">{quantityPurchased}</div>
         </div>
-        <div className="business-buy-and-timer">
-          <div className={'business-buy' + (balance.amount >= price * buyQuantity ? ' active' : '')}
-            onClick={buy}>
-            <span>Buy</span><span>{price.toLocaleString()}</span>
+        <div>
+          <div className="business-progress" onClick={runBusiness}>
+            <Progress timeTaken={timeTaken} uuid={uuid} running={running}/>
+            <span className="business-profit">{profit}</span>
           </div>
-          <div className="business-timer">
-            <CountDown timeTaken={timeTaken} autoStart={running} uuid={uuid} onComplete={onComplete}/>
+          <div className="business-buy-and-timer">
+            <div className={'business-buy' + (balance.amount >= price ? ' active' : '')}
+              onClick={buy}>
+              <span>Buy</span><span>{price.toLocaleString()}</span>
+            </div>
+            <div className="business-timer">
+              <CountDown timeTaken={timeTaken} autoStart={running} uuid={uuid} onComplete={onComplete}/>
+            </div>
           </div>
         </div>
-      </div>
+        </>
+      }
+      {!quantityPurchased &&
+        <div className={'business-unpurchased' + (balance.amount >= price ? ' active' : '')}
+          onClick={buy}>
+          {name}
+        </div>
+      }
     </div>
   );
 }

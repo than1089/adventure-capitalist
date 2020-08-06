@@ -6,6 +6,7 @@
 }
 .business-icon {
   margin-right: 10px;
+  cursor: pointer;
 }
 .business-quantity {
   width: 80px;
@@ -34,10 +35,22 @@
 .business-buy.active {
   background-color: #ff9900;
 }
+.business-unpurchased.active {
+  background-color: #ff9900;
+}
 .business-timer {
   padding-top: 5px;
   width: 110px;
   text-align: center;
   border: 2px solid #dedede;
   border-radius: 5px;
+}
+.business-progress {
+  position: relative;
+  cursor: pointer;
+}
+.business-progress .business-profit {
+  position: absolute;
+  top: 8px;
+  left: 15px;
 }
