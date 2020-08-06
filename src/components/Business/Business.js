@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CountDown } from '../CountDown';
 import { Progress } from '../Progress';
@@ -8,25 +8,21 @@ import './Business.css';
 
 function Business({id, name, price, timeTaken, hasManager, quantityPurchased, icon, profit}) {
   const [uuid, setUuid] = useState(uuidv4());
-  const [running, setRunning] = useState(hasManager);
+  const [autoStart, setAutoStart] = useState(hasManager);
   const dispatch = useDispatch();
   const balance = useSelector(state => state.balance);
 
   const runBusiness = (e) => {
     e.preventDefault();
-    if (!running) {
+    if (!autoStart) {
       setUuid(uuidv4());
-      setRunning(true);
+      setAutoStart(true);
     }
   }
 
   const onComplete = () => {
-    if (!hasManager) {
-      setRunning(false);
-    } else {
-      setUuid(uuidv4());
-      setRunning(true);
-    }
+    setUuid(uuidv4());
+    setAutoStart(hasManager);
     dispatch(increaseBalance(profit));
   }
 
@@ -37,6 +33,13 @@ function Business({id, name, price, timeTaken, hasManager, quantityPurchased, ic
     }
   }
 
+  useEffect(() => {
+    if (hasManager) {
+      setUuid(uuidv4());
+      setAutoStart(true);
+    }
+  }, [hasManager]);
+
   return (
     <div className="business">
       {!!quantityPurchased &&
@@ -45,18 +48,18 @@ function Business({id, name, price, timeTaken, hasManager, quantityPurchased, ic
           <img src={`/images/${icon}`} alt="icon" width="60"/>
           <div className="business-quantity">{quantityPurchased}</div>
         </div>
-        <div>
+        <div className="business-content">
           <div className="business-progress" onClick={runBusiness}>
-            <Progress timeTaken={timeTaken} uuid={uuid} running={running}/>
-            <span className="business-profit">{profit}</span>
+            <Progress timeTaken={timeTaken} uuid={uuid} autoStart={autoStart}/>
+            <span className="business-profit">${profit.toLocaleString()}</span>
           </div>
           <div className="business-buy-and-timer">
             <div className={'business-buy' + (balance.amount >= price ? ' active' : '')}
               onClick={buy}>
-              <span>Buy</span><span>{price.toLocaleString()}</span>
+              <span>Buy</span><span>${price.toLocaleString()}</span>
             </div>
             <div className="business-timer">
-              <CountDown timeTaken={timeTaken} autoStart={running} uuid={uuid} onComplete={onComplete}/>
+              <CountDown timeTaken={timeTaken} autoStart={autoStart} uuid={uuid} onComplete={onComplete}/>
             </div>
           </div>
         </div>
@@ -65,7 +68,8 @@ function Business({id, name, price, timeTaken, hasManager, quantityPurchased, ic
       {!quantityPurchased &&
         <div className={'business-unpurchased' + (balance.amount >= price ? ' active' : '')}
           onClick={buy}>
-          {name}
+          <span>{name}</span><br/>
+          <span className="price">${price.toLocaleString()}</span>
         </div>
       }
     </div>

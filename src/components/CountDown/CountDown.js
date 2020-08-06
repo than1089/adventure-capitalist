@@ -2,34 +2,35 @@ import React, { useEffect, useState, useRef } from 'react';
 
 export function CountDown({timeTaken, onComplete = () => {}, autoStart, uuid}) {
   const [totalSeconds, setTotalSeconds] = useState(timeTaken);
-
-  const timeOutRef = useRef();
-
+  const intervalRef = useRef();
+  
   useEffect(() => {
     setTotalSeconds(timeTaken);
-  }, [timeTaken, uuid])
-
-  useEffect(() => {
     if (!autoStart) {
       return;
     }
-    timeOutRef.current = setTimeout(() => {
-      if (totalSeconds > 1) {
-        setTotalSeconds(totalSeconds - 1);
+    const startTime = (new Date()).getTime();
+    const endTime = startTime + timeTaken * 1000;
+
+    intervalRef.current = setInterval(() => {
+      const currentTime = (new Date()).getTime();
+      if (endTime > currentTime) {
+        setTotalSeconds(Math.ceil((endTime - currentTime)/1000));
       } else {
-        clearTimeout(timeOutRef.current);
+        clearInterval(intervalRef.current);
         onComplete();
       }
-    }, 1000);
+    }, 10);
 
     return () => {
-      clearTimeout(timeOutRef.current);
+      clearInterval(intervalRef.current);
     }
-  }, [totalSeconds, autoStart, uuid, onComplete]);
+  // eslint-disable-next-line
+  }, [uuid, autoStart]);
 
   return (
     <div className="count-down-timer">
-      {formatTime(autoStart ? totalSeconds : 0)}
+      {formatTime(totalSeconds)}
     </div>
   );
 }

@@ -19,15 +19,9 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="businesses">
-        {Object.values(businesses).map(item => 
-          <Business {...item} key={item.id} />
-        )}
-      </div>
-      <div>
-        {balance.amount}
-      </div>
-      <div>
+      <div className="side-bar">
+        <img src="/images/capitalist.png" width="150" alt="Capitalist"/>
+        <div>
           {managers.filter(item => !item.hired).map(item => 
             <div key={item.businessId}>
               <span>{item.name}</span>
@@ -36,6 +30,17 @@ function App() {
               </button>
             </div>
           )}
+      </div>
+      </div>
+      <div className="main">
+        <div className="balance">
+          <span>${balance.amount.toLocaleString()}</span>
+        </div>
+        <div className="businesses">
+          {Object.values(businesses).map(item => 
+            <Business {...item} key={item.id} />
+          )}
+        </div>
       </div>
     </div>
   );

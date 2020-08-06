@@ -3,14 +3,33 @@ body {
   font-family: 'Kalam', cursive;
   font-size: 18px;
   color: #dedede;
+  font-weight: bold;
 }
 .App {
-  max-width: 992px;
+  max-width: 1024px;
   margin: auto;
-  padding: 30px;
   background-color: #272727;
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.7);
+  display: flex;
+}
+.main {
+  flex-grow: 1;
+  padding: 20px;
+}
+.side-bar {
+  background-color: #444444;
+  padding: 10px;
 }
 .businesses {
   display: flex;
+  flex-wrap: wrap;
+}
+.balance {
+  font-size: 55px;
+}
+
+@media (max-width: 1100px) {
+  .App {
+    flex-direction: column;
+  }
 }
