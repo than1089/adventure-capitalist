@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <div className="side-bar">
-        <img src="/images/capitalist.png" width="150" alt="Capitalist"/>
+        <img src="images/capitalist.png" width="150" alt="Capitalist"/>
         <Managers/>
       </div>
       <div className="main">

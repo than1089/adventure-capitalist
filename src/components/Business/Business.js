@@ -62,7 +62,7 @@ export function Business({id, name, price, lastRun, timeTaken, hasManager, quant
       {!!quantityPurchased &&
         <>
         <div className="business-icon" onClick={runBusinessManually}>
-          <img src={`/images/${icon}`} alt="icon" width="60"/>
+          <img src={`images${icon}`} alt="icon" width="60"/>
           <div className="business-quantity">{quantityPurchased}</div>
         </div>
         <div className="business-content">
