@@ -52,6 +52,7 @@ export function Business({id, name, price, lastRun, timeTaken, hasManager, quant
     const now = (new Date()).getTime();
     if (lastRun && now - lastRun < timeTaken) {
       setTimeAlreadyRun(now - lastRun);
+      setRunning(true);
     }
   // eslint-disable-next-line
   }, []);

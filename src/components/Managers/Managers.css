@@ -21,7 +21,7 @@
 .managers-model .modal-content {
   max-width: 600px;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 20px;
   background-color: #272727;
   position: relative;
@@ -72,4 +72,8 @@
 .manager button:not([disabled]) {
   background-color: #1993ce;
   color: #ffffff;
+}
+.manager-list {
+  max-height: 65vh;
+  overflow: auto;
 }

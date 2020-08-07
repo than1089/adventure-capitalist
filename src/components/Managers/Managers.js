@@ -33,18 +33,20 @@ export function Managers() {
             <p className="sub-title">Managers make life easier!<br/>
               Hire one to run your business for you.
             </p>
-            {managers.filter(manager => !manager.hired).map(manager => 
-              <div key={manager.businessId} className="manager">
-                <div className="manager-info">
-                  <div className="manager-name">{manager.name}</div>
-                  <div className="manager-desc">{manager.description}</div>
-                  <div className="manager-price">${manager.price.toLocaleString()}</div>
+            <div class="manager-list">
+              {managers.filter(manager => !manager.hired).map(manager => 
+                <div key={manager.businessId} className="manager">
+                  <div className="manager-info">
+                    <div className="manager-name">{manager.name}</div>
+                    <div className="manager-desc">{manager.description}</div>
+                    <div className="manager-price">${manager.price.toLocaleString()}</div>
+                  </div>
+                  <button disabled={manager.price > balance.amount} onClick={() => { hire(manager) }}>
+                    Hire
+                  </button>
                 </div>
-                <button disabled={manager.price > balance.amount} onClick={() => { hire(manager) }}>
-                  Hire
-                </button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       }
