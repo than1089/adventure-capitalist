@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CountDown } from '../CountDown';
 import { Progress } from '../Progress';
 import { v4 as uuidv4 } from 'uuid';
-import { increaseBalance, decreaseBalance, buyBusiness } from '../../redux/actions';
+import { increaseBalance, decreaseBalance, buyBusiness, completeBusiness } from '../../redux/actions';
 import './Business.css';
 
-function Business({id, name, price, timeTaken, hasManager, quantityPurchased, icon, profit}) {
+export function Business({id, name, price, timeTaken, hasManager, quantityPurchased, icon, profit}) {
   const [uuid, setUuid] = useState(uuidv4());
   const [autoStart, setAutoStart] = useState(hasManager);
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ function Business({id, name, price, timeTaken, hasManager, quantityPurchased, ic
     setUuid(uuidv4());
     setAutoStart(hasManager);
     dispatch(increaseBalance(profit));
+    dispatch(completeBusiness(id));
   }
 
   const buy = () => {
@@ -75,5 +76,3 @@ function Business({id, name, price, timeTaken, hasManager, quantityPurchased, ic
     </div>
   );
 }
-
-export default Business;

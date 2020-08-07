@@ -1,0 +1,75 @@
+.manager-btn {
+  font-size: 24px;
+  border: 2px solid #dedede;
+  padding: 10px 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.manager-btn.active {
+  background-color: #df8a4e;
+}
+.managers-model {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 3;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.managers-model .modal-content {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #272727;
+  position: relative;
+}
+.managers-model .modal-close {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.managers-model h2 {
+  font-size: 42px;
+  text-align: center;
+  margin: 0;
+  color: #1993ce;
+}
+.managers-model .sub-title {
+  text-align: center;
+  margin-top: 0;
+}
+.manager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 20px;
+  max-width: 450px;
+}
+.manager .manager-info {
+  margin-right: 15px;
+}
+.manager .manager-name {
+  font-size: 22px;
+  color: #df8a4e;
+}
+.manager .manager-desc {
+  font-size: 18px;
+  color: #666666;
+}
+.manager button {
+  padding: 10px;
+  width: 150px;
+  font-size: 22px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+.manager button:not([disabled]) {
+  background-color: #1993ce;
+  color: #ffffff;
+}

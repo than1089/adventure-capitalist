@@ -32,4 +32,7 @@ body {
   .App {
     flex-direction: column;
   }
+  .side-bar {
+    display: flex;
+  }
 }

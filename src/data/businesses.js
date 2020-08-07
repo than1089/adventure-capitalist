@@ -19,15 +19,25 @@ const businesses = {
     profit: 30,
     icon: 'newspaper.png',
   },
-  newspaper_delivery1: {
-    id: 'newspaper_delivery1',
-    name: 'Newspaper Deliver',
-    price: 3,
-    timeTaken: 3,
+  car_wash: {
+    id: 'car_wash',
+    name: 'Car Wash',
+    price: 300,
+    timeTaken: 6,
     quantityPurchased: 0,
     hasManager: false,
-    profit: 30,
-    icon: 'newspaper.png',
+    profit: 200,
+    icon: 'car.png',
+  },
+  pizza_delivery: {
+    id: 'pizza_delivery',
+    name: 'Pizza Delivery',
+    price: 2000,
+    timeTaken: 30,
+    quantityPurchased: 0,
+    hasManager: false,
+    profit: 1200,
+    icon: 'pizza.png',
   },
 };
 

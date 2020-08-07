@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { saveCloseTime } from './localStorage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +16,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+window.addEventListener('unload', saveCloseTime);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
