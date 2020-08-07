@@ -1,4 +1,4 @@
-import { INCREASE_BALANCE, DECREASSE_BALANCE, BUY_BUSINESS, COMPLETE_BUSINESS, HIRE_MANAGER } from './actionTypes';
+import { INCREASE_BALANCE, DECREASSE_BALANCE, BUY_BUSINESS, SET_LAST_RUN, HIRE_MANAGER } from './actionTypes';
 
 export const increaseBalance = amount => ({
   type: INCREASE_BALANCE,
@@ -22,8 +22,8 @@ export const buyBusiness = (businessId, qty) => ({
   }
 });
 
-export const completeBusiness = (businessId) => ({
-  type: COMPLETE_BUSINESS,
+export const setLastRun = (businessId) => ({
+  type: SET_LAST_RUN,
   payload: {
     businessId
   }

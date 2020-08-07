@@ -3,7 +3,7 @@ const businesses = {
     id: 'lemonade_stand',
     name: 'Lemonade stand',
     price: 1,
-    timeTaken: 1,
+    timeTaken: 20,
     quantityPurchased: 1,
     hasManager: false,
     profit: 1,

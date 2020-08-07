@@ -21,7 +21,7 @@ function App() {
         </div>
         <div className="businesses">
           {Object.values(businesses).map(item => 
-            <Business {...item} key={item.id} />
+            <Business {...item} timeTaken={item.timeTaken*1000} key={item.id} />
           )}
         </div>
       </div>

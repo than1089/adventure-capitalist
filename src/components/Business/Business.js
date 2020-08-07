@@ -3,28 +3,33 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CountDown } from '../CountDown';
 import { Progress } from '../Progress';
 import { v4 as uuidv4 } from 'uuid';
-import { increaseBalance, decreaseBalance, buyBusiness, completeBusiness } from '../../redux/actions';
+import { increaseBalance, decreaseBalance, buyBusiness, setLastRun } from '../../redux/actions';
 import './Business.css';
 
-export function Business({id, name, price, timeTaken, hasManager, quantityPurchased, icon, profit}) {
+export function Business({id, name, price, lastRun, timeTaken, hasManager, quantityPurchased, icon, profit}) {
   const [uuid, setUuid] = useState(uuidv4());
-  const [autoStart, setAutoStart] = useState(hasManager);
+  const [running, setRunning] = useState(hasManager);
+  const [timeAlreadyRun, setTimeAlreadyRun] = useState(0);
   const dispatch = useDispatch();
   const balance = useSelector(state => state.balance);
 
-  const runBusiness = (e) => {
+  const runBusinessManually = (e) => {
     e.preventDefault();
-    if (!autoStart) {
+    if (!running) {
       setUuid(uuidv4());
-      setAutoStart(true);
+      setRunning(true);
+      dispatch(setLastRun(id));
     }
   }
 
   const onComplete = () => {
-    setUuid(uuidv4());
-    setAutoStart(hasManager);
+    setTimeAlreadyRun(0);
+    setRunning(hasManager);
     dispatch(increaseBalance(profit));
-    dispatch(completeBusiness(id));
+    if (hasManager) {
+      setUuid(uuidv4());
+      dispatch(setLastRun(id));
+    }
   }
 
   const buy = () => {
@@ -37,21 +42,31 @@ export function Business({id, name, price, timeTaken, hasManager, quantityPurcha
   useEffect(() => {
     if (hasManager) {
       setUuid(uuidv4());
-      setAutoStart(true);
+      setRunning(true);
+      dispatch(setLastRun(id));
     }
+  // eslint-disable-next-line
   }, [hasManager]);
+
+  useEffect(() => {
+    const now = (new Date()).getTime();
+    if (lastRun && now - lastRun < timeTaken) {
+      setTimeAlreadyRun(now - lastRun);
+    }
+  // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="business">
       {!!quantityPurchased &&
         <>
-        <div className="business-icon" onClick={runBusiness}>
+        <div className="business-icon" onClick={runBusinessManually}>
           <img src={`/images/${icon}`} alt="icon" width="60"/>
           <div className="business-quantity">{quantityPurchased}</div>
         </div>
         <div className="business-content">
-          <div className="business-progress" onClick={runBusiness}>
-            <Progress timeTaken={timeTaken} uuid={uuid} autoStart={autoStart}/>
+          <div className="business-progress" onClick={runBusinessManually}>
+            <Progress timeTaken={timeTaken} timeAlreadyRun={timeAlreadyRun} uuid={uuid} autoStart={running}/>
             <span className="business-profit">${profit.toLocaleString()}</span>
           </div>
           <div className="business-buy-and-timer">
@@ -60,7 +75,7 @@ export function Business({id, name, price, timeTaken, hasManager, quantityPurcha
               <span>Buy</span><span>${price.toLocaleString()}</span>
             </div>
             <div className="business-timer">
-              <CountDown timeTaken={timeTaken} autoStart={autoStart} uuid={uuid} onComplete={onComplete}/>
+              <CountDown timeTaken={timeTaken} timeAlreadyRun={timeAlreadyRun} autoStart={running} uuid={uuid} onComplete={onComplete}/>
             </div>
           </div>
         </div>

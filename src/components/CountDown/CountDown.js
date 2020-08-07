@@ -1,21 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-export function CountDown({timeTaken, onComplete = () => {}, autoStart, uuid}) {
-  const [totalSeconds, setTotalSeconds] = useState(timeTaken);
+// Time in milisecond
+export function CountDown({timeTaken, timeAlreadyRun, onComplete = () => {}, autoStart, uuid}) {
+  const [timeLeft, setTimeLeft] = useState(timeTaken - timeAlreadyRun);
   const intervalRef = useRef();
-  
   useEffect(() => {
-    setTotalSeconds(timeTaken);
+    setTimeLeft(timeTaken - timeAlreadyRun);
     if (!autoStart) {
       return;
     }
     const startTime = (new Date()).getTime();
-    const endTime = startTime + timeTaken * 1000;
+    const endTime = startTime + timeTaken - Number(timeAlreadyRun);
 
     intervalRef.current = setInterval(() => {
       const currentTime = (new Date()).getTime();
       if (endTime > currentTime) {
-        setTotalSeconds(Math.ceil((endTime - currentTime)/1000));
+        setTimeLeft(endTime - currentTime);
       } else {
         clearInterval(intervalRef.current);
         onComplete();
@@ -30,16 +30,17 @@ export function CountDown({timeTaken, onComplete = () => {}, autoStart, uuid}) {
 
   return (
     <div className="count-down-timer">
-      {formatTime(totalSeconds)}
+      {formatTime(timeLeft)}
     </div>
   );
 }
 
-function formatTime(totalSeconds) {
-  const hours = Math.floor(totalSeconds / 3600);
-  totalSeconds %= 3600;
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
+const formatTime = (timeLeft) => {
+  let secondsLeft = Math.ceil(timeLeft/1000);
+  const hours = Math.floor(secondsLeft / 3600);
+  secondsLeft %= 3600;
+  const minutes = Math.floor(secondsLeft / 60);
+  const seconds = secondsLeft % 60;
   return String(hours).padStart(2, '0') + ':' +
     String(minutes).padStart(2, '0') + ':' +
     String(seconds).padStart(2, '0');

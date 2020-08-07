@@ -1,4 +1,4 @@
-import { BUY_BUSINESS, HIRE_MANAGER, COMPLETE_BUSINESS } from "../actionTypes";
+import { BUY_BUSINESS, HIRE_MANAGER, SET_LAST_RUN } from "../actionTypes";
 import businesses from '../../data/businesses';
 import { round } from '../../utils/number';
 
@@ -24,14 +24,14 @@ export default function(state = initialState, action) {
         }
       };
     }
-    case COMPLETE_BUSINESS:
+    case SET_LAST_RUN:
       const business = state[action.payload.businessId];
 
       return {
         ...state,
         [business.id]: {
           ...business,
-          lastCompleted: (new Date()).getTime()
+          lastRun: (new Date()).getTime()
         }
       }
     case HIRE_MANAGER: {
