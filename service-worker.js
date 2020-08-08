@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/adventure-capitalist/precache-manifest.475c4583eb57f6fb9b39ef913ab04849.js"
+  "/adventure-capitalist/precache-manifest.dc9c39f66b53c71dd2e37e4980bc8030.js"
 );
 
 self.addEventListener('message', (event) => {
