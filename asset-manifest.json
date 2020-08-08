@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/adventure-capitalist/static/css/main.fefbaaf4.chunk.css",
-    "main.js": "/adventure-capitalist/static/js/main.369d9eca.chunk.js",
-    "main.js.map": "/adventure-capitalist/static/js/main.369d9eca.chunk.js.map",
+    "main.css": "/adventure-capitalist/static/css/main.a47cc344.chunk.css",
+    "main.js": "/adventure-capitalist/static/js/main.a949481b.chunk.js",
+    "main.js.map": "/adventure-capitalist/static/js/main.a949481b.chunk.js.map",
     "runtime-main.js": "/adventure-capitalist/static/js/runtime-main.c9f02682.js",
     "runtime-main.js.map": "/adventure-capitalist/static/js/runtime-main.c9f02682.js.map",
-    "static/js/2.b89eeb11.chunk.js": "/adventure-capitalist/static/js/2.b89eeb11.chunk.js",
-    "static/js/2.b89eeb11.chunk.js.map": "/adventure-capitalist/static/js/2.b89eeb11.chunk.js.map",
+    "static/js/2.0673a9e4.chunk.js": "/adventure-capitalist/static/js/2.0673a9e4.chunk.js",
+    "static/js/2.0673a9e4.chunk.js.map": "/adventure-capitalist/static/js/2.0673a9e4.chunk.js.map",
     "index.html": "/adventure-capitalist/index.html",
-    "precache-manifest.6c34f9bf1d92c4a84405e793bbb59c8e.js": "/adventure-capitalist/precache-manifest.6c34f9bf1d92c4a84405e793bbb59c8e.js",
+    "precache-manifest.475c4583eb57f6fb9b39ef913ab04849.js": "/adventure-capitalist/precache-manifest.475c4583eb57f6fb9b39ef913ab04849.js",
     "service-worker.js": "/adventure-capitalist/service-worker.js",
-    "static/css/main.fefbaaf4.chunk.css.map": "/adventure-capitalist/static/css/main.fefbaaf4.chunk.css.map",
-    "static/js/2.b89eeb11.chunk.js.LICENSE.txt": "/adventure-capitalist/static/js/2.b89eeb11.chunk.js.LICENSE.txt"
+    "static/css/main.a47cc344.chunk.css.map": "/adventure-capitalist/static/css/main.a47cc344.chunk.css.map",
+    "static/js/2.0673a9e4.chunk.js.LICENSE.txt": "/adventure-capitalist/static/js/2.0673a9e4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c9f02682.js",
-    "static/js/2.b89eeb11.chunk.js",
-    "static/css/main.fefbaaf4.chunk.css",
-    "static/js/main.369d9eca.chunk.js"
+    "static/js/2.0673a9e4.chunk.js",
+    "static/css/main.a47cc344.chunk.css",
+    "static/js/main.a949481b.chunk.js"
   ]
 }
