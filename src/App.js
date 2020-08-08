@@ -30,8 +30,8 @@ function App() {
             <span>${balance.amount.toLocaleString()}</span>
           </div>
           <div className="businesses">
-            {Object.values(businesses).map(item => 
-              <Business {...item} timeTaken={item.timeTaken*1000} key={item.id} />
+            {Object.entries(businesses).map(([key, item]) => 
+              <Business {...item} timeTaken={item.timeTaken*1000} key={key} />
             )}
           </div>
         </div>
