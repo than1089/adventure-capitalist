@@ -10,7 +10,7 @@ export function AwayEarningModal({onClose = () => {}}) {
     <div className="modal">
       <div className="modal-content">
         <div className="modal-close" onClick={() => onClose()}>
-          <img src={process.env.PUBLIC_URL + '/images/close.png'} width="50" alt="Close" />
+          <img src={process.env.PUBLIC_URL + '/images/close.png'} alt="Close" />
         </div>
         <h2>Wecome back!</h2>
         <div className="come-back-info">

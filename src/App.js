@@ -22,7 +22,7 @@ function App() {
     <>
       <div className="App">
         <div className="side-bar">
-          <img src={process.env.PUBLIC_URL + '/images/capitalist.png'} width="150" alt="Capitalist"/>
+          <img src={process.env.PUBLIC_URL + '/images/capitalist.png'} alt="Capitalist"/>
           <Managers/>
         </div>
         <div className="main">
