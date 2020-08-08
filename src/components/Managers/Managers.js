@@ -24,7 +24,7 @@ export function Managers() {
       <div className={'manager-btn' + (available ? ' active': '')}
         onClick={() => setShowModal(true)}>Managers</div>
       {showModal &&
-        <div className="managers-model">
+        <div className="modal">
           <div className="modal-content">
             <div className="modal-close" onClick={() => setShowModal(false)}>
               <img src={process.env.PUBLIC_URL + '/images/close.png'} width="50" alt="Close" />

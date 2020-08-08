@@ -1,4 +1,5 @@
 import { getCloseTime } from '../localStorage';
+import { millisecondsToStr } from './time';
 
 export const processBackgroundCalculating = state => {
 
@@ -28,6 +29,12 @@ export const processBackgroundCalculating = state => {
     }
     state.businesses[item.id] = item;
   });
+  
   state.balance.amount += earning;
+  
+  state.awayEarning = {
+    amount: earning,
+    awayDuration: millisecondsToStr(now - closeTime)
+  };
   return state;
 }

@@ -8,40 +8,6 @@
 .manager-btn.active {
   background-color: #df8a4e;
 }
-.managers-model {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 3;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-.managers-model .modal-content {
-  max-width: 600px;
-  margin: auto;
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #272727;
-  position: relative;
-}
-.managers-model .modal-close {
-  cursor: pointer;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-}
-.managers-model h2 {
-  font-size: 42px;
-  text-align: center;
-  margin: 0;
-  color: #1993ce;
-}
-.managers-model .sub-title {
-  text-align: center;
-  margin-top: 0;
-}
 .manager {
   display: flex;
   align-items: center;

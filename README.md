@@ -12,5 +12,4 @@ This game has minimum dependencies, no 3rd UI or game engine
 
 ## To-do features
 - Buy X3, X10, X100 and Buy Max.
-- Popup when the user get back to say how much the managers help to earn during the time user left.
 - Implement login with Facebook and post data to back-end when leaving, so users can play on multiple devices without starting from the beginning on a new device.
