@@ -27,7 +27,7 @@ export function Managers() {
         <div className="managers-model">
           <div className="modal-content">
             <div className="modal-close" onClick={() => setShowModal(false)}>
-              <img src="images/close.png" width="50" alt="Close" />
+              <img src={process.env.PUBLIC_URL + '/images/close.png'} width="50" alt="Close" />
             </div>
             <h2>Managers</h2>
             <p className="sub-title">Managers make life easier!<br/>

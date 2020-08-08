@@ -62,7 +62,7 @@ export function Business({id, name, price, lastRun, timeTaken, hasManager, quant
       {!!quantityPurchased &&
         <>
         <div className="business-icon" onClick={runBusinessManually}>
-          <img src={`images${icon}`} alt="icon" width="60"/>
+          <img src={process.env.PUBLIC_URL + '/images/' + icon} alt="icon" width="60"/>
           <div className="business-quantity">{quantityPurchased}</div>
         </div>
         <div className="business-content">
@@ -84,7 +84,8 @@ export function Business({id, name, price, lastRun, timeTaken, hasManager, quant
       }
       {!quantityPurchased &&
         <div className={'business-unpurchased' + (balance.amount >= price ? ' active' : '')}
-          onClick={buy}>
+          onClick={buy}
+          style={{backgroundImage: `url(${process.env.PUBLIC_URL}/images/lock.png)`}}>
           <span>{name}</span><br/>
           <span className="price">${price.toLocaleString()}</span>
         </div>
