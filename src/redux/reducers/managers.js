@@ -7,11 +7,13 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case HIRE_MANAGER: {
       const manager = action.payload.manager;
-      manager.hired = true;
-      return [
+      return {
         ...state,
-        manager
-      ];
+        [manager.id]: {
+          ...manager,
+          hired: true
+        }
+      };
     }
     default:
       return state;

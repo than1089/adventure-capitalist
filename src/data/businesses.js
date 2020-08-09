@@ -1,6 +1,7 @@
 const businesses = {
   lemonade_stand: {
     id: 'lemonade_stand',
+    order: 1,
     name: 'Lemonade stand',
     price: 1,
     timeTaken: 1,
@@ -11,6 +12,7 @@ const businesses = {
   },
   newspaper_delivery: {
     id: 'newspaper_delivery',
+    order: 2,
     name: 'Newspaper Deliver',
     price: 30,
     timeTaken: 3,
@@ -21,6 +23,7 @@ const businesses = {
   },
   car_wash: {
     id: 'car_wash',
+    order: 3,
     name: 'Car Wash',
     price: 500,
     timeTaken: 6,
@@ -31,6 +34,7 @@ const businesses = {
   },
   pizza_delivery: {
     id: 'pizza_delivery',
+    order: 4,
     name: 'Pizza Delivery',
     price: 3000,
     timeTaken: 12,
@@ -41,6 +45,7 @@ const businesses = {
   },
   donut_shop: {
     id: 'donut_shop',
+    order: 5,
     name: 'Donut Shop',
     price: 50000,
     timeTaken: 30,
@@ -51,6 +56,7 @@ const businesses = {
   },
   shrimp_boat: {
     id: 'shrimp_boat',
+    order: 6,
     name: 'Shrimp Boat',
     price: 800000,
     timeTaken: 90,
@@ -61,6 +67,7 @@ const businesses = {
   },
   hockey_team: {
     id: 'hockey_team',
+    order: 7,
     name: 'Hockey Team',
     price: 6000000,
     timeTaken: 600,
@@ -71,6 +78,7 @@ const businesses = {
   },
   movie_studio: {
     id: 'movie_studio',
+    order: 8,
     name: 'Movie Studio',
     price: 100000000,
     timeTaken: 3600,
@@ -81,6 +89,7 @@ const businesses = {
   },
   bank: {
     id: 'bank',
+    order: 9,
     name: 'Bank',
     price: 5000000000,
     timeTaken: 36000,
@@ -91,6 +100,7 @@ const businesses = {
   },
   oil_company: {
     id: 'oil_company',
+    order: 10,
     name: 'Oil Company',
     price: 153434564431,
     timeTaken: 36000,

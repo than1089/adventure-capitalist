@@ -18,6 +18,8 @@ function App() {
     }
   }, [awayEarning]);
 
+  const businessesToArray = businesses => Object.values(businesses).sort((a, b) => a.order - b.order);
+
   return (
     <>
       <div className="App">
@@ -30,8 +32,8 @@ function App() {
             <span>${balance.amount.toLocaleString()}</span>
           </div>
           <div className="businesses">
-            {Object.entries(businesses).map(([key, item]) => 
-              <Business {...item} timeTaken={item.timeTaken*1000} key={key} />
+            {businessesToArray(businesses).map(item => 
+              <Business {...item} timeTaken={item.timeTaken*1000} key={item.id} />
             )}
           </div>
         </div>

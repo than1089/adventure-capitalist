@@ -10,12 +10,14 @@ export function Managers() {
   const balance = useSelector(state => state.balance);
   const [showModal, setShowModal] = useState(false);
 
-  const available = !!managers.find(manager => manager.price <= balance.amount && !manager.hired);
+  const managersToArray = managers => Object.values(managers).sort((a, b) => a.order - b.order);
+
+  const available = !!managersToArray(managers).find(item => item.price <= balance.amount && !item.hired);
   const dispatch = useDispatch();
 
-  const hire = (item) => {
-    if (item.price <= balance.amount) {
-      dispatch(hireManager(item));
+  const hire = (manager) => {
+    if (manager.price <= balance.amount) {
+      dispatch(hireManager(manager));
     }
   }
 
@@ -33,8 +35,8 @@ export function Managers() {
             <p className="sub-title">Managers make life easier!<br/>
               Hire one to run your business for you.
             </p>
-            <div class="manager-list">
-              {managers.filter(manager => !manager.hired).map(manager => 
+            <div className="manager-list">
+              {managersToArray(managers).filter(manager => !manager.hired).map(manager => 
                 <div key={manager.businessId} className="manager">
                   <div className="manager-info">
                     <div className="manager-name">{manager.name}</div>

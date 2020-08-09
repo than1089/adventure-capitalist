@@ -6,7 +6,7 @@ body {
   font-weight: bold;
 }
 .App {
-  max-width: 1024px;
+  max-width: 1200px;
   margin: auto;
   background-color: #272727;
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.7);
