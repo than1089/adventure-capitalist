@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
-import './App.css';
 import { Business } from './components/Business';
 import { Managers } from './components/Managers';
 import { AwayEarningModal } from './components/AwayEarningModal';
+import { objectToList } from './utils/game';
+
+import './App.css';
 
 function App() {
   const balance = useSelector(state => state.balance);
@@ -18,8 +19,6 @@ function App() {
     }
   }, [awayEarning]);
 
-  const businessesToArray = businesses => Object.values(businesses).sort((a, b) => a.order - b.order);
-
   return (
     <>
       <div className="App">
@@ -32,7 +31,7 @@ function App() {
             <span>${balance.amount.toLocaleString()}</span>
           </div>
           <div className="businesses">
-            {businessesToArray(businesses).map(item => 
+            {objectToList(businesses).map(item => 
               <Business {...item} timeTaken={item.timeTaken*1000} key={item.id} />
             )}
           </div>

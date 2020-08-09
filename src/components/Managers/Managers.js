@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { hireManager } from '../../redux/actions';
+import { objectToList } from '../../utils/game';
 
 import './Managers.css';
 
@@ -10,9 +11,7 @@ export function Managers() {
   const balance = useSelector(state => state.balance);
   const [showModal, setShowModal] = useState(false);
 
-  const managersToArray = managers => Object.values(managers).sort((a, b) => a.order - b.order);
-
-  const available = !!managersToArray(managers).find(item => item.price <= balance.amount && !item.hired);
+  const available = !!objectToList(managers).find(item => item.price <= balance.amount && !item.hired);
   const dispatch = useDispatch();
 
   const hire = (manager) => {
@@ -36,7 +35,7 @@ export function Managers() {
               Hire one to run your business for you.
             </p>
             <div className="manager-list">
-              {managersToArray(managers).filter(manager => !manager.hired).map(manager => 
+              {objectToList(managers).filter(manager => !manager.hired).map(manager => 
                 <div key={manager.businessId} className="manager">
                   <div className="manager-info">
                     <div className="manager-name">{manager.name}</div>

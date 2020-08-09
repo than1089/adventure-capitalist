@@ -38,3 +38,6 @@ export const processBackgroundCalculating = state => {
   };
   return state;
 }
+
+// Only applicable for this game data Objects, values are objects and have order property
+export const objectToList = object => Object.values(object).sort((a, b) =>  a.order - b.order);
