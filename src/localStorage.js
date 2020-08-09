@@ -2,7 +2,7 @@ import { processBackgroundCalculating } from './utils/game';
 
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('Capitalist_State');
+    const serializedState = localStorage.getItem('AdventureCapitalist_State');
     if (serializedState === null) {
       return undefined;
     }
@@ -15,7 +15,7 @@ export const loadState = () => {
 
 export const saveState = (state) => {
   try {
-    localStorage.setItem('Capitalist_State', JSON.stringify(state));
+    localStorage.setItem('AdventureCapitalist_State', JSON.stringify(state));
   } catch (error) {
     console.warn(error);
   }
@@ -23,7 +23,7 @@ export const saveState = (state) => {
 
 export const getCloseTime = () => {
   try {
-    const time = localStorage.getItem('Capitalist_CloseTime');
+    const time = localStorage.getItem('AdventureCapitalist_CloseTime');
     if (time === null) {
       return undefined;
     }
@@ -36,7 +36,7 @@ export const getCloseTime = () => {
 
 export const saveCloseTime = () => {
   try {
-    localStorage.setItem('Capitalist_CloseTime', (new Date().getTime()));
+    localStorage.setItem('AdventureCapitalist_CloseTime', (new Date().getTime()));
   } catch (error) {
     console.warn(error);
   }
