@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fe344d2abd0601d70890e2a829e79cfa",
+    "revision": "f43aa0366d33c26a36ce0aa4ff5c2151",
     "url": "/adventure-capitalist/index.html"
   },
   {
-    "revision": "45eb4ae52b5f2762b103",
-    "url": "/adventure-capitalist/static/css/main.b9cb08e6.chunk.css"
+    "revision": "8ff99316fbc78247601b",
+    "url": "/adventure-capitalist/static/css/main.45f7172a.chunk.css"
   },
   {
     "revision": "8b257dcf9fb7cf98b879",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/adventure-capitalist/static/js/2.d0016a81.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "45eb4ae52b5f2762b103",
-    "url": "/adventure-capitalist/static/js/main.73e77c35.chunk.js"
+    "revision": "8ff99316fbc78247601b",
+    "url": "/adventure-capitalist/static/js/main.143ae11d.chunk.js"
   },
   {
     "revision": "d613010d3fc993ec28b5",
