@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/adventure-capitalist/static/css/main.b9cb08e6.chunk.css",
-    "main.js": "/adventure-capitalist/static/js/main.82e0df5b.chunk.js",
-    "main.js.map": "/adventure-capitalist/static/js/main.82e0df5b.chunk.js.map",
+    "main.js": "/adventure-capitalist/static/js/main.73e77c35.chunk.js",
+    "main.js.map": "/adventure-capitalist/static/js/main.73e77c35.chunk.js.map",
     "runtime-main.js": "/adventure-capitalist/static/js/runtime-main.c9f02682.js",
     "runtime-main.js.map": "/adventure-capitalist/static/js/runtime-main.c9f02682.js.map",
     "static/js/2.d0016a81.chunk.js": "/adventure-capitalist/static/js/2.d0016a81.chunk.js",
     "static/js/2.d0016a81.chunk.js.map": "/adventure-capitalist/static/js/2.d0016a81.chunk.js.map",
     "index.html": "/adventure-capitalist/index.html",
-    "precache-manifest.a496e642f2136990d17fa38fbcee0842.js": "/adventure-capitalist/precache-manifest.a496e642f2136990d17fa38fbcee0842.js",
+    "precache-manifest.c47714c1e11a0dd9a338aef899a5238f.js": "/adventure-capitalist/precache-manifest.c47714c1e11a0dd9a338aef899a5238f.js",
     "service-worker.js": "/adventure-capitalist/service-worker.js",
     "static/css/main.b9cb08e6.chunk.css.map": "/adventure-capitalist/static/css/main.b9cb08e6.chunk.css.map",
     "static/js/2.d0016a81.chunk.js.LICENSE.txt": "/adventure-capitalist/static/js/2.d0016a81.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c9f02682.js",
     "static/js/2.d0016a81.chunk.js",
     "static/css/main.b9cb08e6.chunk.css",
-    "static/js/main.82e0df5b.chunk.js"
+    "static/js/main.73e77c35.chunk.js"
   ]
 }
