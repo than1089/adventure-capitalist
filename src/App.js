@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Business } from './components/Business';
 import { Managers } from './components/Managers';
 import { AwayEarningModal } from './components/AwayEarningModal';
+import { GuideModal } from './components/GuideModal';
 import { objectToList } from './utils/game';
 
 import './App.css';
@@ -12,12 +13,19 @@ function App() {
   const businesses = useSelector(state => state.businesses);
   const awayEarning = useSelector(state => state.awayEarning);
   const [awayEarningShow, setAwayEarningShow] = useState(false);
+  const [guideModalShow, setGuideModalShow] = useState(false);
 
   useEffect(() => {
     if (awayEarning && awayEarning.amount) {
       setAwayEarningShow(true);
     }
   }, [awayEarning]);
+
+  useEffect(() => {
+    if (!balance.amount) {
+      setGuideModalShow(true);
+    }
+  }, [balance]);
 
   return (
     <>
@@ -38,7 +46,10 @@ function App() {
         </div>
       </div>
       {awayEarningShow &&
-        <AwayEarningModal onClose={setAwayEarningShow}/>
+        <AwayEarningModal onClose={() => setAwayEarningShow(false)}/>
+      }
+      {guideModalShow &&
+        <GuideModal onClose={() => setGuideModalShow(false)}/>
       }
     </>
   );
