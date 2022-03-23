@@ -13,6 +13,12 @@ This game has minimum dependencies, no 3rd UI or game engine
 - Redux
 - uuid
 
+## Installation
+```
+yarn install
+yarn start
+```
+
 ## Technical explanation
 This game has multiple busnesses. With managers, each business will be able to run independently and automatically.
 
